@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomGUIControl : MonoBehaviour
+public abstract class CustomGUIControl : MonoBehaviour
 {
    
     public CustomGUI guiPos;
@@ -10,7 +10,7 @@ public class CustomGUIControl : MonoBehaviour
     public GUIContent content;
     public bool isStyle;
 
-    private void OnGUI()
+    public void DrawGUI()
     {
         if (isStyle)
         {
@@ -22,15 +22,8 @@ public class CustomGUIControl : MonoBehaviour
         }
     }
 
-    protected virtual void OnStyleDrawControl() 
-    {
-        GUI.Button(guiPos.controlPos, content, style);
-      
-    }
+    protected abstract void OnStyleDrawControl();
 
-    protected virtual void DisStyleDrawControl()
-    {
-        GUI.Button(guiPos.controlPos, content);
 
-    }
+    protected abstract void DisStyleDrawControl();
 }
